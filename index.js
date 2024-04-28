@@ -39,38 +39,7 @@ async function run() {
             res.send(result);
         })
 
-        app.get('/myCraft/:email',async( req, res)=> {
-            // const cursor = usersCollection.find()
-            const result = await usersCollection.find({email:req.params.email}).toArray();
-            res.send(result);
-        })
-
-        // single product update /details
-        app.get('/singleProduct/:id',async( req, res)=> {
-            // const cursor = usersCollection.find()
-            const result = await usersCollection.findOne({_id:new ObjectId( req.params.id),})
-            res.send(result);
-        })
-
-        // details
-        app.get('/details/:id',async( req, res)=> {
-            // const cursor = usersCollection.find()
-            const result = await usersCollection.findOne({_id:new ObjectId( req.params.id),})
-            res.send(result);
-        })
-
-
-
-        app.post('/addCrafts', async (req, res) => {
-            const newCraft = req.body;
-            console.log(newCraft);
-            const result = await usersCollection.insertOne(newCraft);
-            res.send(result);
-
-
-
-        }
-        )
+       
 
 
         app.put('/updateProduct/:id',async(req,res)=>{
