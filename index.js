@@ -46,6 +46,14 @@ async function run() {
             const result = await cursor.toArray();
             res.send(result);
         })
+
+        app.get('/category/:subcategory', async (req, res) => {
+            // const cursor = usersCollection.find()
+            const result = await usersCollection.find({ subcategoryName: req.params.subcategory }).toArray();
+            res.send(result);
+        })
+
+      
         // category
 
 
@@ -59,11 +67,16 @@ async function run() {
             res.send(result);
         })
 
+
+
+
         app.get('/myCraft/:email', async (req, res) => {
             // const cursor = usersCollection.find()
             const result = await usersCollection.find({ email: req.params.email }).toArray();
             res.send(result);
         })
+
+
 
         // single product update /details
         app.get('/singleProduct/:id', async (req, res) => {
