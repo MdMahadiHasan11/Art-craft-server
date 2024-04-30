@@ -94,16 +94,7 @@ async function run() {
 
 
 
-    app.post('/addCrafts', async (req, res) => {
-        const newCraft = req.body;
-        console.log(newCraft);
-        const result = await usersCollection.insertOne(newCraft);
-        res.send(result);
-
-
-
-    }
-    )
+   
 
 
     app.put('/updateProduct/:id', async (req, res) => {
