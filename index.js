@@ -78,74 +78,7 @@ async function run() {
 
 
 
-        // single product update /details
-        app.get('/singleProduct/:id', async (req, res) => {
-            // const cursor = usersCollection.find()
-            const result = await usersCollection.findOne({ _id: new ObjectId(req.params.id), })
-            res.send(result);
-        })
-
-        // details
-        app.get('/details/:id', async (req, res) => {
-            // const cursor = usersCollection.find()
-            const result = await usersCollection.findOne({ _id: new ObjectId(req.params.id), })
-            res.send(result);
-        })
-
-
-
-        app.post('/addCrafts', async (req, res) => {
-            const newCraft = req.body;
-            console.log(newCraft);
-            const result = await usersCollection.insertOne(newCraft);
-            res.send(result);
-
-
-
-        }
-        )
-
-
-        app.put('/updateProduct/:id', async (req, res) => {
-            const id = req.params.id;
-            const user = req.body;
-            console.log(id, user);
-            const filter = { _id: new ObjectId(id) }
-            const options = { upsert: true }
-            const updateUser = {
-                $set: {
-
-                    // const updateCraft = { displayName, email, item_name, subcategoryName, description, price, rating, processingTime, customization, stockStatus, image }
-
-                    item_name: user.item_name,
-                    subcategoryName: user.subcategoryName,
-                    description: user.description,
-                    price: user.price,
-                    rating: user.rating,
-                    processingTime: user.processingTime,
-                    customization: user.customization,
-                    stockStatus: user.stockStatus,
-                    image: user.image
-
-                }
-            }
-
-            const result = await usersCollection.updateOne(filter, updateUser, options);
-            res.send(result);
-
-        })
-
-        app.delete('/delete/:id', async (req, res) => {
-            const id = req.params.id;
-
-            console.log('delete form database ', id);
-
-            const query = { _id: new ObjectId(id) }
-            const result = await usersCollection.deleteOne(query);
-            res.send(result);
-
-        })
-
+       
 
 
         // Send a ping to confirm a successful connection
